@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-20T16:52:39.888Z",
+  "generated_at": "2026-10-20T16:53:25.533Z",
   "items": {
     "problem:83": {
       "kind": "problem",
@@ -56,7 +56,7 @@
       "url": "https://www.deep-ml.com/math-problems/8",
       "path": "math/0008-vector-norms-and-linear-independence",
       "first_solved_at": "2026-10-17T14:40:05.886Z",
-      "last_pushed_at": "2026-10-17T14:40:05.886Z"
+      "last_pushed_at": "2026-10-20T16:53:24.981Z"
     },
     "problem:121": {
       "kind": "problem",
