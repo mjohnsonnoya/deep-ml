@@ -15,34 +15,20 @@ def compute_norm(arr: np.ndarray, norm_type: str) -> float:
         The computed norm as a float
     """
     # Your code here
-    if norm_type == 'l1':
-        l1 = 0
-        for num in arr.reshape(-1):
-            l1 += abs(num)
-        
-        return float(l1)
+    if norm_type == 'frobenius':
+        if arr.ndim != 2:
+            raise ValueError('must be a 2D array');
+        return float(np.linalg.norm(arr.flatten()))
+    
+    elif norm_type == 'l1':
+        return float(sum(abs(val) for val in arr.flatten()))
     
     elif norm_type == 'l2':
-        l2 = 0
-        for num in arr.reshape(-1):
-            l2 += num ** 2
-
-        return np.sqrt(l2)
+        return np.sqrt(sum(arr.flatten() ** 2))
     
     elif norm_type == 'linf':
-        linf = 0;
-        for num in arr.reshape(-1):
-            linf = max(linf, abs(num))
-        
-        return float(linf)
-
-    elif norm_type == 'frobenius':
-        if (arr.ndim != 2):
-            raise ValueError("array must be 2d");
-        fro = 0
-        for num in arr.reshape(-1):
-            fro += num ** 2
-        
-        return np.sqrt(fro)
+        return float(max([abs(val) for val in arr.flatten()]))
+    
     else:
-        raise ValueError("not a valid norm")
+        raise ValueError("not a valid value")
+        
