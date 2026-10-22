@@ -13,17 +13,11 @@ def gradient_direction_magnitude(gradient: list) -> dict:
 		- direction: Unit vector in direction of steepest ascent
 		- descent_direction: Unit vector in direction of steepest descent
 	"""
-	gradient = np.asarray(gradient)
+	# Your code here
+	magnitude = float(np.sqrt(sum([val ** 2 for val in gradient])))
 
-	magnitude = np.sqrt(sum(gradient ** 2))
-
-	direction = np.zeros_like(gradient)
-	descent_direction = np.zeros_like(gradient)
-	if (magnitude != 0):
-		direction = gradient / magnitude
-		descent_direction = -1 * direction
-
-	return {'magnitude': magnitude,
-		'direction': direction,
-		'descent_direction': descent_direction}
-
+	return {
+		"magnitude": magnitude,
+		"direction": [val / magnitude for val in gradient] if magnitude != 0 else gradient,
+		"descent_direction": [-val / magnitude for val in gradient] if magnitude != 0 else gradient
+	}

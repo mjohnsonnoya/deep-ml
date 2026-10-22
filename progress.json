@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-22T18:16:34.496Z",
+  "generated_at": "2026-10-22T18:25:23.607Z",
   "items": {
     "problem:83": {
       "kind": "problem",
@@ -193,9 +193,9 @@
       "url": "https://www.deep-ml.com/problems/308",
       "path": "problems/0308-gradient-direction-and-magnitude",
       "first_solved_at": "2026-10-19T03:26:55.539Z",
-      "last_pushed_at": "2026-10-19T03:26:55.539Z",
+      "last_pushed_at": "2026-10-22T18:25:22.772Z",
       "language": "python",
-      "lines": 30
+      "lines": 23
     },
     "problem:15": {
       "kind": "problem",
