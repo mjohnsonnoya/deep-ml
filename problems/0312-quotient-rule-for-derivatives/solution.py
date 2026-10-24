@@ -13,25 +13,24 @@ def quotient_rule_derivative(g_coeffs: list, h_coeffs: list, x: float) -> float:
         The derivative value f'(x)
     """
     # Your code here
-    def polynomial(coeffs: list):
-        total = 0
-        for i, num in enumerate(reversed(coeffs)):
-            total += num * (x ** i)
-
-        return total
-
-    def derivative(coeffs: list):
-        total = 0
-        for i, num in enumerate(reversed(coeffs)):
-            if i == 0:
-                continue
-            else:                
-                total += i * num * (x ** (i - 1))
+    def polynomial(coeffs: list) -> float:
+        ans = 0
+        for i, coeff in enumerate(reversed(coeffs)):
+            ans += coeff * x ** i
         
-        return total
+        return ans
+    
+    def derivative(coeffs: list) -> float:
+        ans = 0
+        for i, coeff in enumerate(reversed(coeffs)):
+            if i != 0:
+                ans += (i) * coeff * x ** (i - 1)
+        return ans
 
-    numerator = (derivative(g_coeffs) * polynomial(h_coeffs) - derivative(h_coeffs) * polynomial(g_coeffs))
+    g_prime = derivative(g_coeffs)
+    g = polynomial(g_coeffs)
 
-    denominator = polynomial(h_coeffs) ** 2
+    h_prime = derivative(h_coeffs)
+    h = polynomial(h_coeffs)
 
-    return numerator/denominator
+    return (g_prime * h - g * h_prime) / (h ** 2)
