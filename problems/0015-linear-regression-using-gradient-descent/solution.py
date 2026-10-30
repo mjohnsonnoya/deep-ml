@@ -17,7 +17,9 @@ def linear_regression_gradient_descent(X: np.ndarray, y: np.ndarray, alpha: floa
     y = y.reshape(-1, 1)  # Ensure y is a column vector
     theta = np.zeros((n, 1))  # Initialize weights to zeros
 
-    for i in range(iterations):
-        theta = theta - alpha * 1/m * X.T @ (X @ theta - y)
+    # Your code here: implement gradient descent
+
+    for _ in range(iterations):
+        theta = theta - 1/m * alpha * X.T @ (X @ theta - y)
 
     return theta.flatten()
