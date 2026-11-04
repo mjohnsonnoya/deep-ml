@@ -4,13 +4,4 @@ def matrix_dot_vector(a: list[list[int|float]], b: list[int|float]) -> list[int|
 	if len(a[0]) != len(b):
 		return -1
 
-	ans = []
-
-	for row in range(len(a)):
-		dot_product = 0
-		for col in range(len(a[0])):
-			dot_product += a[row][col] * b[col]
-		
-		ans.append(dot_product)
-	
-	return ans
+	return [sum(x * y for x, y in zip (row, b)) for row in a]
