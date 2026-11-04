@@ -13,34 +13,30 @@ def descriptive_statistics(data: list | np.ndarray) -> dict:
         percentiles (25th, 50th, 75th), and interquartile range (IQR)
     """
     # Your code here
-    mean = sum(data)/len(data)
+    length = len(data)
 
-    median = (data[(len(data) - 1)//2] + data[math.ceil((len(data) - 1)/2)]) / 2
-
-    count = {}
+    mean = sum(data)/length
+    median = (data[math.floor((length - 1) * 0.5)] + data[math.ceil((length - 1) * 0.5)]) / 2
 
     mode = data[0]
     maxfreq = 1
 
-    for value in data:
-        if (value not in count):
-            count[value] = 0
-        
-        count[value] += 1
-
-        if count[value] > maxfreq:
-            mode = value
-            maxfreq = count[value]
+    count = {}
+    for datum in data:
+        if datum not in count:
+            count[datum] = 0
+        count[datum] += 1
     
-    variance = sum((value - mean) ** 2 for value in data)/len(data)
+        if count[datum] > maxfreq:
+            mode = datum
+            maxfreq = count[datum]
+    
+    variance = 1/length * sum((val - mean)**2 for val in data)
+    standard_deviation = np.sqrt(variance)
 
-    standard_deviation = math.sqrt(variance)
-
-    percentile_25 = (data[math.floor((len(data) - 1)/4)] + data[math.ceil((len(data) - 1)/4)]) / 2
-
+    percentile_25 = (data[math.floor((length - 1) * 0.25)] + data[math.ceil((length - 1) * 0.25)]) / 2
     percentile_50 = median
-     
-    percentile_75 = (data[math.floor((len(data) - 1) * 3/4)] + data[math.ceil((len(data) - 1)*3/4)]) / 2
+    percentile_75 = (data[math.floor((length - 1) * 0.75)] + data[math.ceil((length - 1) * 0.75)]) / 2
 
     interquartile_range = percentile_75 - percentile_25
 
@@ -57,5 +53,3 @@ def descriptive_statistics(data: list | np.ndarray) -> dict:
     }
 
 
-
-    
